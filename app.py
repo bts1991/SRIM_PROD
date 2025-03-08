@@ -2,11 +2,15 @@ import os
 import json
 import re
 from flask import Flask, render_template, request, redirect, jsonify
-from bson import json_util
-from bson.json_util import dumps
+# from bson import json_util
+from pymongo import json_util
+# from bson.json_util import dumps
+from pymongo.json_util import dumps
 # from flask_pymongo import PyMongo |||333
 from flask import Flask, render_template, request, redirect
-from flask.json import jsonify
+# from flask_pymongo import PyMongo |||333
+from flask importFlask, render_template, request, redirect
+from flsk.json import jsonify
 from pymongo import MongoClient
 import requests
 from bs4 import BeautifulSoup

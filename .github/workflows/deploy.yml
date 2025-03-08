@@ -19,6 +19,7 @@ jobs:
           host: ${{ secrets.GCP_INSTANCE_IP }}
           username: YOUR_GCP_USERNAME
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
+          port: 22
           script: |
             cd /home/YOUR_PROJECT
             git pull origin main

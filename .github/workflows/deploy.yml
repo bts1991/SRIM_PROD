@@ -21,4 +21,4 @@ jobs:
           ssh-keyscan -H 34.22.102.174 >> ~/.ssh/known_hosts
 
       - name: Deploy to GCE
-        run: ssh -i ~/.ssh/id_rsa ubuntu@34.22.102.174 "bash /var/www/deploy.sh"
+        run: ssh -i ~/.ssh/id_rsa btsy7331@34.22.102.174 "cd ~/SRIM_PROD && bash deploy.sh"

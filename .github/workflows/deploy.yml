@@ -17,7 +17,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.GCP_INSTANCE_IP }}
-          username: YOUR_GCP_USERNAME
+          username: btsy7331
           key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
           port: 22
           script: |

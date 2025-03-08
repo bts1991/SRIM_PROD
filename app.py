@@ -31,7 +31,7 @@ from request import RequestStock, RequestCurrentStockPrice
 from StockMange import deleteStock, updateShowYn
 from pymongo.server_api import ServerApi
 
-app = Flask(__name__)
+app = Flask(__name__) ## 연동 테스트 ㅎㅎㅎ
 
 # client = MongoClient('localhost', 27017)
 # client = MongoClient("mongodb://localhost:27017/")

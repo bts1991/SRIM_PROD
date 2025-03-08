@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아코디언 예제</title>
+    <link rel="stylesheet" href="./accordion_test.css">
+</head>
+<body>
+    <div class="area">
+        <div class="accordion">
+            <div class="accordion_item open">
+              <button>
+                첫번째 아코디언
+              </button>
+              <div class="accordion_content">
+                <ul>
+                  <li><label>
+                    <input type="checkbox" >
+                    테스트세트스
+                    </label></li>
+                  <li>리스트 아이템2</li>
+                  <li>리스트 아이템3</li>
+                  <li>리스트 아이템4</li>
+                  <li>리스트 아이템5</li>
+                  <li>리스트 아이템6</li>
+                  <li>리스트 아이템7</li>
+                  <li>리스트 아이템8</li>
+                </ul>
+              </div>
+            </div>
+            <div class="accordion_item open">
+              <button>
+                두번째 아코디언
+              </button>
+              <div class="accordion_content">
+                <ul>
+                    <li>리스트 아이템1</li>
+                    <li>리스트 아이템2</li>
+                  </ul>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <!-- 아코디언 동작 -->
+    <script defer>
+        //아코디언 클릭 이벤트 정의
+        document.querySelectorAll('.accordion .accordion_item > button').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                let accordion_item = e.currentTarget.parentNode;
+                accordion_item.classList.toggle('open');
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details 태그 예제</title>    
+	<style>
+	/* 화살표 완전 제거 */
+	summary::-webkit-details-marker {
+	  display: none;
+	}
+
+	/* 탭 모양 스타일링 */
+	summary {
+	  list-style: none; /* 리스트 마커 제거 */
+	  padding: 8px 16px; /* 원하는 패딩 적용 */
+	  background-color: #f0f0f0; /* 배경색 지정 */
+	  border: 1px solid #ddd; /* 테두리 스타일 설정 */
+	  cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+	  outline: none; /* 클릭 시 포커스 표시 제거 */
+	}
+
+	/* 열린 상태 스타일링 (선택적) */
+	details[open] summary {
+	  background-color: #e0e0e0; /* 열린 상태 배경색 변경 */
+	}
+	</style>
+</head>
+<body>
+    <h2>제목</h2>
+    <p>이 부분은 보통 내용에 대한 간단한 설명입니다.</p>
+
+    <!-- <details> 태그 시작 -->
+    <details id="myDetails">
+        <summary>추가 정보 보기</summary>
+        <p>여기에는 추가 정보가 들어갑니다. 이 부분은 사용자가 클릭하면 펼쳐집니다.</p>
+    </details>
+    <!-- <details> 태그 종료 -->
+
+    <p>이 부분은 추가 정보를 제공하지 않는 본문입니다.</p>
+</body>
+</html>
+<script>
+  const detailsElement = document.getElementById("myDetails");
+
+  detailsElement.addEventListener("toggle", function() {
+    if (detailsElement.open) {
+      console.log("내용이 열림");
+      // 추가 작업을 여기에 추가할 수 있습니다.
+    } else {
+      console.log("내용이 닫힘");
+      // 다른 작업을 여기에 추가할 수 있습니다.
+    }
+  });
+</script>

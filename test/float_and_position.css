@@ -1,0 +1,18 @@
+.gray {
+    background-color: gray;
+    width: 80vw;
+    height: 30vh;
+  }
+  
+  .skyblue {
+    background-color: skyblue;
+    width: 80vw;
+    height: 30vh;
+    position: fixed;
+  }
+  
+  .pink {
+    background-color: pink;
+    width: 80vw;
+    height: 90vh;
+  }

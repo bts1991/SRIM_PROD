@@ -22,3 +22,8 @@ jobs:
 
       - name: Deploy to GCE
         run: ssh -i ~/.ssh/id_rsa ubuntu@YOUR_GCE_EXTERNAL_IP "bash /var/www/deploy.sh"
+
+      - name: Debug IP Resolution
+        run: |
+          echo "Testing IP resolution..."
+          ping -c 4 YOUR_GCE_EXTERNAL_IP

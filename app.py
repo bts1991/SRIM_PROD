@@ -2,11 +2,9 @@ import os
 import json
 import re
 from flask import Flask, render_template, request, redirect, jsonify
-# from bson import json_util
 from bson import json_util
-# from bson.json_util import dumps
 from bson.json_util import dumps
-# from flask_pymongo import PyMongo
+# from flask_pymongo import PyMongo |||333
 from flask import Flask, render_template, request, redirect
 from flask.json import jsonify
 from pymongo import MongoClient
@@ -38,6 +36,7 @@ app = Flask(__name__)
 # client = MongoClient('localhost', 27017)
 # client = MongoClient("mongodb://localhost:27017/")
 uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+
 client = MongoClient(uri, server_api=ServerApi('1'))
 
 # db = client.test_database

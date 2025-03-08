@@ -36,12 +36,11 @@ from pymongo.server_api import ServerApi
 
 #     main.delete_one({'CoID' : CoID})
 
-
+uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 def deleteStock(CoID, baseDate):
     # client = MongoClient('localhost', 27017)
     # client = MongoClient("mongodb://localhost:27017/")
-    uri = "mongodb+srv://btsy7331:dmadkr753!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority"
     client = MongoClient(uri, server_api=ServerApi('1'))
 
     # db = client.test_database
@@ -53,7 +52,6 @@ def deleteStock(CoID, baseDate):
 def insertStock(baseDate, itmsNm, DCRate, PER, currentPrice, currentPriceURL, ROE, EBITDARate, dividendRate, annualRateOfReturn, annualRateOfReturnPER, cashEquivalents, cashEquivalentsShare, equity, excessEarnings, shareOutstanding, totalValue, valuePerShare, valuePerShareCash, EBITDARateURL ,PERURL, ROEURL, cashEquivalentsURL, dividendRateURL, equityURL, shareOutstandingURL, show_yn, nation):
     # client = MongoClient('localhost', 27017)
     # client = MongoClient("mongodb://localhost:27017/")
-    uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     client = MongoClient(uri, server_api=ServerApi('1'))
 
     # db = client.test_database
@@ -94,7 +92,6 @@ def insertStock(baseDate, itmsNm, DCRate, PER, currentPrice, currentPriceURL, RO
 def updateStock(baseDate, itmsNm, DCRate, PER, currentPrice, currentPriceURL, ROE, EBITDARate, dividendRate, annualRateOfReturn, annualRateOfReturnPER, cashEquivalents, cashEquivalentsShare, equity, excessEarnings, shareOutstanding, totalValue, valuePerShare, valuePerShareCash, EBITDARateURL ,PERURL, ROEURL, cashEquivalentsURL, dividendRateURL, equityURL, shareOutstandingURL, show_yn, nation):
     # client = MongoClient('localhost', 27017)
     # client = MongoClient("mongodb://localhost:27017/")
-    uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     client = MongoClient(uri, server_api=ServerApi('1'))
 
     # db = client.test_database
@@ -135,7 +132,6 @@ def updateStock(baseDate, itmsNm, DCRate, PER, currentPrice, currentPriceURL, RO
 def updateShowYn(itmsNm, baseDate, show_yn):
     # client = MongoClient('localhost', 27017)
     # client = MongoClient("mongodb://localhost:27017/")
-    uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     client = MongoClient(uri, server_api=ServerApi('1'))
 
     # db = client.test_database
@@ -147,7 +143,6 @@ def updateShowYn(itmsNm, baseDate, show_yn):
 def findStock(itmsNm, baseDate):
     # client = MongoClient('localhost', 27017)
     # client = MongoClient("mongodb://localhost:27017/")
-    uri = "mongodb+srv://btsy7331:dygksqhrdma155!@cluster0.dw6olvv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     client = MongoClient(uri, server_api=ServerApi('1'))
 
 

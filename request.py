@@ -41,7 +41,7 @@ def request(StockNo, mrktCtg):
     res2 = requests.get(url2)
     soup2 = BeautifulSoup(res2.text, "html.parser")
 
-    url3 = "https://www.kisrating.com/ratingsStatistics/statics_spread.do"
+    url3 = "https://www.nicerating.com/disclosure/gradedRates.do"
     res3 = requests.get(url3)
     soup3 = BeautifulSoup(res3.text, "html.parser")
 
@@ -125,10 +125,10 @@ def RequestStock(CoNm) :
         # print(ROE)
         # print(type(ROE))
 
-        ## 할인율(BBB- 회사채 5년 수익률) 구하기
+        ## 할인율(BBB- 회사채 5년 수익률) 구하기 => 3년 수익률로 변경(25.03.08)
         soup3 = requestResult[4]
         url3 = requestResult[5]
-        ts4 = soup3.select_one('#con_tab1 > div.table_ty1 > table > tbody > tr:nth-child(11) > td:nth-child(9)').text
+        ts4 = soup3.select_one('#dBody > section > div.tbl_type01 > table > tbody > tr:nth-child(10) > td:nth-child(7)').text
         DCRate = float(ts4)
         # print(DCRate)
         # print(type(DCRate))

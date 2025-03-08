@@ -1,4 +1,4 @@
-name: Deploy to GCP Compute Engine
+name: Deploy to GCE
 
 on:
   push:
@@ -10,17 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Deploy to Compute Engine
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.GCP_INSTANCE_IP }}
-          username: btsy7331
-          key: ${{ secrets.GCP_SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            cd /home/YOUR_PROJECT
-            git pull origin main
-            sudo systemctl restart myapp
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GCE_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H YOUR_GCE_EXTERNAL_IP >> ~/.ssh/known_hosts
+
+      - name: Deploy to GCE
+        run: ssh -i ~/.ssh/id_rsa ubuntu@YOUR_GCE_EXTERNAL_IP "bash /var/www/deploy.sh"

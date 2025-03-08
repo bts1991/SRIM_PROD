@@ -3,7 +3,7 @@ name: Deploy to GCE
 on:
   push:
     branches:
-      - main
+      - main  # main 브랜치에 push될 때 실행
 
 jobs:
   deploy:
@@ -18,12 +18,7 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.GCE_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.GCE_EXTERNAL_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H 34.22.102.174 >> ~/.ssh/known_hosts
 
       - name: Deploy to GCE
-        run: ssh -i ~/.ssh/id_rsa ubuntu@YOUR_GCE_EXTERNAL_IP "bash /var/www/deploy.sh"
-
-      - name: Debug IP Resolution
-        run: |
-          echo "Testing IP resolution..."
-          ping -c 4 YOUR_GCE_EXTERNAL_IP
+        run: ssh -i ~/.ssh/id_rsa ubuntu@34.22.102.174 "bash /var/www/deploy.sh"

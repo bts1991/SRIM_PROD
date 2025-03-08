@@ -6,10 +6,8 @@ from flask import Flask, render_template, request, redirect, jsonify
 from pymongo import json_util
 # from bson.json_util import dumps
 from pymongo.json_util import dumps
-# from flask_pymongo import PyMongo |||333
+# from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect
-# from flask_pymongo import PyMongo |||333
-from flask importFlask, render_template, request, redirect
 from flsk.json import jsonify
 from pymongo import MongoClient
 import requests

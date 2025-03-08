@@ -8,7 +8,7 @@ from bson import json_util
 from bson.json_util import dumps
 # from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect
-from flsk.json import jsonify
+from flask.json import jsonify
 from pymongo import MongoClient
 import requests
 from bs4 import BeautifulSoup

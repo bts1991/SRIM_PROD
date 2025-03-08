@@ -3,9 +3,9 @@ import json
 import re
 from flask import Flask, render_template, request, redirect, jsonify
 # from bson import json_util
-from pymongo import json_util
+from bson import json_util
 # from bson.json_util import dumps
-from pymongo.json_util import dumps
+from bson.json_util import dumps
 # from flask_pymongo import PyMongo
 from flask import Flask, render_template, request, redirect
 from flsk.json import jsonify

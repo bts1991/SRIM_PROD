@@ -22,7 +22,7 @@ from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import requests
 from urllib.parse import urlencode, unquote
 import requests
-# import pandas as pd
+import pandas as pd
 import math
 # import numpy as np
 import xmltodict
@@ -41,8 +41,9 @@ def request(StockNo, mrktCtg):
     res2 = requests.get(url2)
     soup2 = BeautifulSoup(res2.text, "html.parser")
 
-    url3 = "https://www.nicerating.com/disclosure/gradedRates.do"
-    res3 = requests.get(url3)
+    url3 = "https://www.kisrating.com/ratingsStatistics/statics_spread.do"
+    session = requests.Session()
+    res3 = session.get(url3)
     soup3 = BeautifulSoup(res3.text, "html.parser")
 
     url4 = "https://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=" + StockNo + "&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN="
@@ -128,7 +129,17 @@ def RequestStock(CoNm) :
         ## 할인율(BBB- 회사채 5년 수익률) 구하기 => 3년 수익률로 변경(25.03.08)
         soup3 = requestResult[4]
         url3 = requestResult[5]
-        ts4 = soup3.select_one('#dBody > section > div.tbl_type01 > table > tbody > tr:nth-child(10) > td:nth-child(7)').text
+        # ts4 = soup3.select_one('#dBody > section > div.tbl_type01 > table > tbody > tr:nth-child(10) > td:nth-child(7)').text
+        
+        # 수익률 테이블 선택 (수익률 탭: con_tab1)
+        table = soup3.select_one("#con_tab1 table")
+
+        # 'BBB-' 등급 행만 탐색
+        for row in table.select("tbody tr"):
+            cols = [col.text.strip().replace("%", "") for col in row.select("td")]
+            if cols and cols[0] == "BBB-":
+                ts4 = cols[8]  # 5년 수익률은 9번째 열 (0부터 시작)
+        
         DCRate = float(ts4)
         # print(DCRate)
         # print(type(DCRate))

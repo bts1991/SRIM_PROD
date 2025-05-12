@@ -235,10 +235,11 @@
         function toggleColumn(CoID, baseDate) {
         console.log(CoID+","+baseDate)
 
-        const checkbox = document.getElementById(CoID+","+baseDate);
+        const safeId = CoID.replace(/\s+/g, '').replace(/\//g, '-');
+        const checkbox = document.getElementById(safeId+","+baseDate);
         console.log('???'+checkbox.checked)
         
-        const get_th = document.getElementsByName("("+CoID+","+baseDate+")")
+        const get_th = document.getElementsByName("("+safeId+","+baseDate+")")
         console.log(get_th)
         console.log(get_th.length)
         for ( var i = 0; i < get_th.length; i++) {
@@ -316,7 +317,7 @@
                     {% for result_list in result_list %}
                     <li>
                         <label>
-                            <input type="checkbox" id = {{result_list.CoID}},{{result_list.baseDate}} {{result_list.checked_yn}} onchange="toggleColumn('{{result_list.CoID}}','{{result_list.baseDate}}')">
+                            <input type="checkbox" id = {{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}} {{result_list.checked_yn}} onchange="toggleColumn('{{result_list.CoID}}','{{result_list.baseDate}}')">
                             {{result_list.CoID}}({{result_list.baseDate}})
                         </label>
                     </li>
@@ -362,7 +363,7 @@
     <tr>
         <th class="tg-0lax"></th>
         {% for result_list in result_list %}
-        <th class="tg-0lax" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}}>{{result_list.CoID}}<button class = delete_button onclick="delete_list('{{result_list.CoID}}','{{result_list.baseDate}}')">삭제</button></th>
+        <th class="tg-0lax" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}}>{{result_list.CoID}}<button class = delete_button onclick="delete_list('{{result_list.CoID}}','{{result_list.baseDate}}')">삭제</button></th>
         {% endfor %}
     </tr>
 
@@ -373,105 +374,105 @@
     <tr>
         <td class="tg-0lax">기준일</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}})  {{result_list.show_yn}}>{{result_list.baseDate}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}})  {{result_list.show_yn}}>{{result_list.baseDate}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">기업가치</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.totalValue}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.totalValue}}</td>
         {% endfor %}
 
     </tr>
     <tr>
         <td class="tg-0lax">자기자본</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.equityURL}}">{{result_list.equity}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.equityURL}}">{{result_list.equity}}</td>
         {% endfor %}
 
     </tr>
     <tr>
         <td class="tg-0lax">초과이익</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.excessEarnings}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.excessEarnings}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">ROE</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.ROEURL}}" target='_blank'>{{result_list.ROE}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.ROEURL}}" target='_blank'>{{result_list.ROE}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">할인율</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.DCRate}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.DCRate}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax" >주식수</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.shareOutstandingURL}}" target='_blank'>{{result_list.shareOutstanding}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.shareOutstandingURL}}" target='_blank'>{{result_list.shareOutstanding}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">현금성자산</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.cashEquivalentsURL}}" target='_blank'>{{result_list.cashEquivalents}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.cashEquivalentsURL}}" target='_blank'>{{result_list.cashEquivalents}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">주당현금성자산</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.cashEquivalentsShare}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.cashEquivalentsShare}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">PER</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.PERURL}}" target='_blank'>{{result_list.PER}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.PERURL}}" target='_blank'>{{result_list.PER}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">EBITDA증가율</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.EBITDARateURL}}" target='_blank'>{{result_list.EBITDARate}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.EBITDARateURL}}" target='_blank'>{{result_list.EBITDARate}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">배당수익률</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.dividendRateURL}}" target='_blank'>{{result_list.dividendRate}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.dividendRateURL}}" target='_blank'>{{result_list.dividendRate}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">연간이익률</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.annualRateOfReturn}}</td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.annualRateOfReturn}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-0lax">현재 주가</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.currentPriceURL}}" target='_blank'>{{result_list.currentPrice}}</a></td>
+        <td class="tg-buh4" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} ><a href="{{result_list.currentPriceURL}}" target='_blank'>{{result_list.currentPrice}}</a></td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-6t3r-1">주당 가치</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4-1" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.valuePerShare}}</td>
+        <td class="tg-buh4-1" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.valuePerShare}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-6t3r-1">주당 가치+현금</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4-1" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.valuePerShareCash}}</td>
+        <td class="tg-buh4-1" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.valuePerShareCash}}</td>
         {% endfor %}
     </tr>
     <tr>
         <td class="tg-6t3r-1">연간이익율/PER</td>
         {% for result_list in result_list %}
-        <td class="tg-buh4-1" name = ({{result_list.CoID}},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.annualRateOfReturnPER}}</td>
+        <td class="tg-buh4-1" name = ({{ result_list.CoID | replace(' ', '') | replace('/', '-') }},{{result_list.baseDate}}) {{result_list.show_yn}} >{{result_list.annualRateOfReturnPER}}</td>
         {% endfor %}
     </tr>
     </tbody>
